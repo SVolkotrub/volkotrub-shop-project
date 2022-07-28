@@ -1,0 +1,125 @@
+.navbar-container {
+    height: 80px;
+   text-align: center;
+    max-width: 1440px;
+   margin-top: 0px;
+    padding-left: 117px;
+    padding-right: 117px;
+    position: relative;
+   
+}
+.navbar-row {
+    padding-top: 28px;
+display: flex;
+justify-content: space-between;
+}
+.navbar-menu{
+    flex: 1;
+    text-decoration: none;
+    text-align: start;
+    font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 120%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 32px;
+    text-transform: uppercase;
+    
+}
+
+.navbar-icon{
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    flex: 1;
+}
+.navbar-right{
+    flex: 1;
+    text-align: end;    
+}
+.currency-icon{
+display: inline;
+margin-right: 20px;
+cursor: pointer;
+font-size: 18px;
+font-weight: 500;
+line-height: 160%;
+color: #1D1F22;
+position: relative;
+}
+.currency-vector {
+    margin-left: 10px;
+    position: absolute;
+    left: 76.47%;
+    right: 20.59%;
+    top: 53.75%;
+    bottom: 38.75%;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.currency-popup {
+    padding: 17px 0px 17px 0px;
+    text-align: left;
+    position: absolute;
+    top: 65px;
+    right: 78px;
+    width: 114px;
+    background: #FFFFFF;
+    z-index: 5;
+}
+.currencies {
+    width: 114px;
+    padding: 8px 0px 8px 20px;
+}
+.currency-selected{
+    width: 114px;
+    padding: 8px 0px 8px 20px;
+    background: #EEEEEE;
+}
+.symbol-label {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 160%;
+    color: #1D1F22;
+}
+.container-main {
+    margin: 0px 100px 80px 100px;
+    padding-top: 80px;
+}
+.categories{
+    display: inline-flex;
+    gap: 30px;
+    text-decoration: none;
+    color: black;
+}
+.categories .inactive {
+    text-decoration: "none" !important;
+    color: "black" !important;
+}
+a:-webkit-any-link {
+    cursor: pointer;
+    text-decoration: none;
+}
+.cart-icon {
+    cursor: pointer;
+    transition: color 500ms ease;
+    margin-top: 2px;
+    margin-left: 22px;
+}
+.cart-quantity{
+    position: absolute;
+    top: 5px;
+    right: 105px;
+    width: 20px;
+    height: 20px;
+    background: #1D1F22;
+    border-radius: 60px;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    z-index: 0;
+}
