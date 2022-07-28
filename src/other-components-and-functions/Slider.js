@@ -61,14 +61,15 @@ class Slider extends PureComponent {
         const { slideIndex, gallery } = this.state;
        
         return (
-          <>
-             <Arrow direction="left" onClick={() => this.handleClick("left")}> <ArrowImage direction="left" src={ vector} alt='logo'></ArrowImage> </Arrow>
+          <> 
+             {gallery.length > 1 && (<><Arrow direction="left" onClick={() => this.handleClick("left")}> <ArrowImage direction="left" src={ vector} alt='logo'></ArrowImage> </Arrow>
+             <Arrow direction="right" onClick={()=>this.handleClick("right")}><ArrowImage direction="right" src={ vector} alt='logo'></ArrowImage></Arrow></>)}  
                 <Wrapper slideIndex={slideIndex} >   
                     {gallery.map((img, index) => {
                     return <Image src={img} alt="logo" key={index}></Image>
                 })}       
              </Wrapper>
-             <Arrow direction="right" onClick={()=>this.handleClick("right")}><ArrowImage direction="right" src={ vector} alt='logo'></ArrowImage></Arrow>
+             
          </>
         );
     }
