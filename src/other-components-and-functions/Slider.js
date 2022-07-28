@@ -19,12 +19,12 @@ const Arrow = styled.div`
     z-index: 2;
 `;
 const ArrowImage = styled.img`
-transform: ${props => props.direction === "right" && "rotate(-180deg)"};
+    transform: ${props => props.direction === "right" && "rotate(-180deg)"};
 `;
 const Wrapper = styled.div`
- display: flex;
- transition: all 1s ease;
- transform: translateX(${props => props.slideIndex * -200}px);
+    display: flex;
+     transition: all 1s ease;
+    transform: translateX(${props => props.slideIndex * -200}px);
  `;
 const Image = styled.img`
      margin: 0;
@@ -53,7 +53,7 @@ class Slider extends PureComponent {
     };
     componentDidUpdate(props, state) {
         if (JSON.stringify(this.props.cartProducts[this.state.productIndex].gallery) !== JSON.stringify(this.state.gallery)) {
-            this.setState({ gallery: this.props.cartProducts[this.state.productIndex].gallery});
+            this.setState({ slideIndex: 0, gallery: this.props.cartProducts[this.state.productIndex].gallery});
          }
     
   }

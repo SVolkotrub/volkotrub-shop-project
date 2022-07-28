@@ -38,7 +38,6 @@ export default function getProductsByCategory(props) {
     async function fetchData() {
         
       let result = await client.query({ query: GET_PRODUCT }).then((result) => {
-        // console.log(result);
                 return result;
             }).catch((error) => {
                 console.log("Something went wrong in response");

@@ -6,37 +6,37 @@ import { connect } from 'react-redux';
 import { addProductToCart, changeProductQuantity } from "../../store/cart";
 
 const ProductCardStyle = styled.div`
-flex: 1;
-order: 0;
-flex-grow: 0;
-background: #FFFFFF;
-padding: 16px;
-width: 386px;
-position: relative;
-&:hover {
-box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
-}
+  flex: 1;
+  order: 0;
+  flex-grow: 0;
+  background: #FFFFFF;
+  padding: 16px;
+  width: 386px;
+  position: relative;
+  &:hover {
+  box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+  }
 `;
 const Text = styled.p`
-position: absolute;
-left: 25.42%;
-right: 25.71%;
-top: 150px;
-display: ${props => props.inStock ? `none` : `block`};
-font-weight: 400;
-font-size: 24px;
-line-height: 160%;
-color: #8D8F9A;
+  position: absolute;
+  left: 25.42%;
+  right: 25.71%;
+  top: 150px;
+  display: ${props => props.inStock ? `none` : `block`};
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 160%;
+  color: #8D8F9A;
 `;
 const Button = styled.button`
-display:  none;
-background: #5ECE7B;
-width: 52px;
-height: 52px;
-border: none;
-border-radius: 50%;
-justify-content: center;
-${props => props.inStock ? ` opacity: 1 `: `display: none !important; opacity: 0` } ;
+  display:  none;
+  background: #5ECE7B;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  justify-content: center;
+  ${props => props.inStock ? ` opacity: 1 `: `display: none !important; opacity: 0` } ;
 
 ${ProductCardStyle}:hover & {
   display: block;
@@ -47,28 +47,28 @@ ${ProductCardStyle}:hover & {
 }
 `;
 const Image = styled.img`
-width: 354px;
-height: 330px;
-object-fit: cover;
-position: relative;
-${props => props.inStock ? `opacity: 1` : `opacity: 0.5`}
+  width: 354px;
+  height: 330px;
+  object-fit: cover;
+  position: relative;
+  ${props => props.inStock ? `opacity: 1` : `opacity: 0.5`}
 `;
 
 const Title = styled.p`
-font-weight: 300;
-font-size: 18px;
-line-height: 160%;
-text-align: left;
-color: ${props => props.inStock? `#1D1F22` : `#8D8F9A` } ;
-margin: 24px 0 0 0;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 160%;
+  text-align: left;
+  color: ${props => props.inStock? `#1D1F22` : `#8D8F9A` } ;
+  margin: 24px 0 0 0;
 `;
 const Price = styled.p`
-margin: 0;
-font-weight: 500;
-font-size: 18px;
-line-height: 160%;
-text-align: left;
-color: ${props => props.inStock? `#1D1F22` : `#8D8F9A` } ;
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  text-align: left;
+  color: ${props => props.inStock? `#1D1F22` : `#8D8F9A` } ;
 `;
 class ProductCard extends PureComponent{
 constructor(props) {

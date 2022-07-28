@@ -15,8 +15,6 @@ class CurrencyList extends PureComponent {
     }
     async fetchData() {
         let response = await this.props.dispatch(fetchCurrency());
-        console.log("from component");
-        console.log(response.payload);
         return this.setState({ currencies: response.payload, loading: false });
 
     }

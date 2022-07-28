@@ -9,11 +9,11 @@ import { addProductToCart,changeProductQuantity } from "../store/cart";
 
 
 const FilterColor = styled.div`
-width: 32px;
-height: 32px;
-cursor: pointer;
-background-color: ${props => props.color};
-${props => props.selected ? `outline-offset: 1px; outline: 1px solid #5ECE7B` : `none`};
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background-color: ${props => props.color};
+    ${props => props.selected ? `outline-offset: 1px; outline: 1px solid #5ECE7B` : `none`};
 `;
 
 function withParams(Component) {

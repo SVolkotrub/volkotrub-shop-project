@@ -1,8 +1,8 @@
 .navbar-container {
     height: 80px;
-   text-align: center;
+    text-align: center;
     max-width: 1440px;
-   margin-top: 0px;
+    margin-top: 0px;
     padding-left: 117px;
     padding-right: 117px;
     position: relative;
@@ -10,17 +10,17 @@
 }
 .navbar-row {
     padding-top: 28px;
-display: flex;
-justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 .navbar-menu{
     flex: 1;
     text-decoration: none;
     text-align: start;
     font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 120%;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
     display: flex;
     justify-content: flex-start;
     gap: 32px;

@@ -27,8 +27,7 @@ class ShowAttributesInCart extends PureComponent {
         
     }
      colorSelect(indexAttribute, index) {
-         if (this.props.cartProducts[this.state.productIndex].selectedAttributes[indexAttribute][1] === index) {
-            
+         if (this.props.cartProducts[this.state.productIndex].selectedAttributes[indexAttribute][1] === index) { 
             return true;
         } else { return false; }
     }
@@ -39,7 +38,6 @@ class ShowAttributesInCart extends PureComponent {
     componentDidUpdate(props, state) {
      if (JSON.stringify(this.state.selectedAttributes) !== JSON.stringify(this.props.cartProducts[this.state.productIndex].selectedAttributes)) {
         this.setState({ selectedAttributes: this.props.cartProducts[this.state.productIndex].selectedAttributes });
-       
     }
   }
     render() {

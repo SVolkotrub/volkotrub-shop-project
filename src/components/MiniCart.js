@@ -12,7 +12,6 @@ class MiniCart extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            totalAmount: [],
         };
         this.getCurrentPrice = this.getCurrentPrice.bind(this);
         this.getTotalPrice = this.getTotalPrice.bind(this);
@@ -26,7 +25,6 @@ class MiniCart extends PureComponent {
                 return currentProductPrice;
             } else { return null; }
         })
-        this.state.totalAmount.push(currentProductPrice);
         return currentProductPrice;
     }
     getTotalPrice() {
