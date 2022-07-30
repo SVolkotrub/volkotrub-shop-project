@@ -7,7 +7,7 @@ export default function getProductsByCategory(props) {
     });
   const GET_PRODUCT = gql`
         query Query {
-  product(id: "${props.params.id}") {
+  product(id: "${props.id}") {
     id
     name
     inStock
@@ -46,9 +46,6 @@ export default function getProductsByCategory(props) {
         return result.data.product; 
         
     }
-    fetchData();
-
-  
  const response = fetchData();
     return response;
 }
