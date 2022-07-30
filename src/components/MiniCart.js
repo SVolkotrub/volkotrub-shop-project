@@ -59,7 +59,8 @@ class MiniCart extends PureComponent {
                                 <p className="minicart-counter" onClick={() => { }}key={`minicart counter ${index}`}>{ product.productQuantity}</p>
                                 <img className="minicart-btn-image" src={minus} alt="logo" key={`minicart btn-m ${index}`} onClick={()=>{this.decreaseDeleteProduct(index)}}/>
                             </div>
-                            <img src={product.gallery[0]} className="minicart-image" key={`minicart img ${index}`} alt="logo"></img>
+                            <div className="minicart-img-container"><img src={product.gallery[0]} className="minicart-image" key={`minicart img ${index}`} alt="logo"></img></div>
+                            
                         </div>
                     </div> 
                     )

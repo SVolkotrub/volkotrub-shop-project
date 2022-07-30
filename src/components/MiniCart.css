@@ -106,9 +106,11 @@
     display: flex;
     flex-direction: row;
 }
-.minicart-image {
+.minicart-img-container {
     width: 121px;
-    object-fit: cover;
+}
+.minicart-image {
+    max-width: 100%;
 }
 .minicart-btn-wrapper {
     display: flex;

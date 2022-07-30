@@ -11,19 +11,27 @@
     margin: 0px 40px 0px 0px;
     width: 80px;
     height: 580px;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
     gap: 40px;
 }
-.small-image{
+.small-image-container{
     width: 80px;
     height: 80px;
-    object-fit: cover;
 }
-.big-image {
+.small-image{
+    max-height: 100%;
+    max-width: 100%;
+    /* object-fit: cover; */
+}
+.big-image-container {
     width: 610px;
     height: 511px;
     margin-right: 100px;
-    object-fit: cover;
+}
+.big-image {
+    max-height: 100%;
+    max-width: 100%;
 }
 .content-block {
     width: 292px;

@@ -111,10 +111,11 @@ class ProductPage extends PureComponent {
                 <div className="product-container">
                     <div className="small-image-wrapper">
                         {gallery.map((img, index) => {
-                                return <img className="small-image" src={img} key={`img_${index}`} alt="prod" onClick={() => {this.setState({toggleImage: index})}} />                            
+                                return <div key={`container_${index}`} className="small-image-container"><img className="small-image" src={img} key={`img_${index}`} alt="prod" onClick={() => {this.setState({toggleImage: index})}} /> </div>                           
                         })}
                     </div>
-                    <img className="big-image" src={gallery[toggleImage]} alt=""/>
+                    <div className="big-image-container"><img className="big-image" src={gallery[toggleImage]} alt=""/></div>
+                    
                     <div className="content-block">
                         <p className="brand">{product.brand}</p>
                         <p className="name">{product.name} </p>

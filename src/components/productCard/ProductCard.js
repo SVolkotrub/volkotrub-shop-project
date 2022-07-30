@@ -46,10 +46,14 @@ ${ProductCardStyle}:hover & {
   cursor: pointer;  
 }
 `;
-const Image = styled.img`
+const ImageContainer = styled.div`
   width: 354px;
   height: 330px;
-  object-fit: cover;
+
+`;
+const Image = styled.img`
+  max-height: 100%;
+  width: auto;
   position: relative;
   ${props => props.inStock ? `opacity: 1` : `opacity: 0.5`}
 `;
@@ -121,13 +125,13 @@ constructor(props) {
         this.getPrice();
         return (
             <ProductCardStyle key={product.id} >
-                <Image inStock={inStock} src={product.gallery[0]} alt=" product" />
+                <ImageContainer><Image inStock={inStock} src={product.gallery[0]} alt=" product" /></ImageContainer>
                 <Text inStock={inStock}>OUT OF STOCK</Text>
                 <Title inStock={inStock}>{product.brand} {product.name}</Title>
                 <Price inStock={inStock}>{this.props.currency} {amount}</Price>
-                {inStock && <Link
+                <Link
                 style={{ position: "absolute", inset: 0 }}
-                    to={`${product.id}`} ></Link>}
+                    to={`${product.id}`} ></Link>
                 <Button inStock={inStock} onClick={()=> this.addToCart(product) }> <img src={icon} alt="icon" onClick={()=> null} /></Button>
             </ProductCardStyle>
         )

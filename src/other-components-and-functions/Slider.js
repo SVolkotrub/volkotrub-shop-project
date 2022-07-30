@@ -26,11 +26,15 @@ const Wrapper = styled.div`
      transition: all 1s ease;
     transform: translateX(${props => props.slideIndex * -200}px);
  `;
+const SliderImageContainer = styled.div`
+    margin: 0;
+    width: 200px;
+    height: 288px;
+`;
 const Image = styled.img`
-     margin: 0;
-     width: 200px;
-     height: 288px;
-     object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+     /* object-fit: cover; */
  `;
 class Slider extends PureComponent {
     constructor(props) {
@@ -66,7 +70,7 @@ class Slider extends PureComponent {
              <Arrow direction="right" onClick={()=>this.handleClick("right")}><ArrowImage direction="right" src={ vector} alt='logo'></ArrowImage></Arrow></>)}  
                 <Wrapper slideIndex={slideIndex} >   
                     {gallery.map((img, index) => {
-                    return <Image src={img} alt="logo" key={index}></Image>
+                    return <SliderImageContainer key={`container_slider${index}`}><Image src={img} alt="logo" key={index}></Image></SliderImageContainer>
                 })}       
              </Wrapper>
              
