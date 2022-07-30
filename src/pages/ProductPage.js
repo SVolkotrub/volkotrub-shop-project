@@ -48,7 +48,7 @@ class ProductPage extends PureComponent {
         })
     }
     async fetchData(props) {
-        let productRequest = await getProductById(this.props);
+        let productRequest = await getProductById(this.props.params);
         this.setState({ prices: productRequest.prices });
         this.getPrice();
         return  this.setState({ product: productRequest, gallery: productRequest.gallery, attributes: productRequest.attributes, loading: false });
