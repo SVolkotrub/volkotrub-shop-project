@@ -8,7 +8,7 @@ const FilterColor = styled.div`
 width: ${props => props.view === "cart" ? `32px` : `16px`};
 height: ${props => props.view === "cart" ? `32px` : `16px`};
 cursor: pointer;
-background-color: ${props => props.color};
+${props => props.color === '#FFFFFF' ? `background-color: ${props.color}; outline-offset: -1px; outline: 1px solid black` : `background-color: ${props.color}`  };
 ${props => props.selected ? `outline-offset: 1px; outline: 1px solid #5ECE7B` : `none`};
 `; 
 const TextItem = styled.p`
