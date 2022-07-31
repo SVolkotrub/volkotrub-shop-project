@@ -7,6 +7,18 @@ import { connect } from 'react-redux';
 import "./ProductPage.css";
 import { addProductToCart,changeProductQuantity } from "../store/cart";
 
+const TextOutOfStock = styled.p`
+    text-transform: uppercase;
+    position: absolute;
+    left: 25.42%;
+    right: 25.71%;
+    top: 200px;
+    display:  block;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 160%;
+    color: #8D8F9A;
+`;
 
 const FilterColor = styled.div`
     width: 32px;
@@ -114,7 +126,10 @@ class ProductPage extends PureComponent {
                                 return <div key={`container_${index}`} className="small-image-container"><img className="small-image" src={img} key={`img_${index}`} alt="prod" onClick={() => {this.setState({toggleImage: index})}} /> </div>                           
                         })}
                     </div>
-                    <div className="big-image-container"><img className="big-image" src={gallery[toggleImage]} alt=""/></div>
+                    <div className="big-image-container">
+                        <img className="big-image" src={gallery[toggleImage]} alt="" />
+                        {!product.inStock && <TextOutOfStock >Out of Stock</TextOutOfStock>}
+                    </div>
                     
                     <div className="content-block">
                         <p className="brand">{product.brand}</p>
@@ -155,7 +170,7 @@ class ProductPage extends PureComponent {
                         })}                        
                         <p className="attribute-name">Price:</p>
                         <p className="price">{this.props.currency} {amount }</p>
-                        <button className="button-style" onClick={()=> this.addToCart(product) }>Add to cart</button>
+                        {product.inStock && (<button  className="button-style" onClick={()=> this.addToCart(product) }>Add to cart</button>)}
                         <p className="description"><Interweave content={product.description} /></p>
                     </div>
                 </div>
