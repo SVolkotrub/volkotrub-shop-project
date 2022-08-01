@@ -7,7 +7,7 @@ class CurrencyList extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            activeItem: 0,
+            activeItem: this.props.activeItem,
             currencies: null,
             currency: this.props.currency,
             loading: false,
@@ -24,7 +24,7 @@ class CurrencyList extends PureComponent {
     }
     onSelectItem = (index, item) => {
         this.setState({ activeItem: index, currency: item.symbol });
-        this.props.dispatch(updateCurrency(item.symbol));
+        this.props.dispatch(updateCurrency({currency: item.symbol, activeItem: index, currencyOpen: false}));
     };
     render() {
         const { currencies, loading } = this.state;
@@ -47,6 +47,7 @@ class CurrencyList extends PureComponent {
 function mapStateToProps(state) {
     return {
         currency: state.currency.currency,
+        activeItem: state.currency.activeItem,
         currencies: state.currency.currencies,
     }
 };

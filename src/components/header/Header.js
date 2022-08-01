@@ -9,6 +9,7 @@ import cartIcon from "./bag-empty.png";
 import currencyBtn from "./vector.png";
 import styled from 'styled-components';
 import "./Header.css";
+import { showCurrencyList } from "../../store/currency";
 
 const ModalShadow = styled.div`
  position: fixed;
@@ -43,8 +44,9 @@ class Header extends PureComponent {
             <>
                 {this.state.cartOpen && (
                         <ModalShadow onClick={() => this.setState({ cartOpen: !this.state.cartOpen })} />)}
-                {this.state.currencyOpen && (
-                        <Modal onClick={() => this.setState({ currencyOpen: !this.state.currencyOpen })} />)}
+                {this.props.currencyOpen && (
+                        // <Modal onClick={() => this.setState({ currencyOpen: !this.state.currencyOpen })} />)}
+                    <Modal onClick={() => this.props.dispatch(showCurrencyList(!this.props.currencyOpen))} />)}
                 <div className="navbar-container">   
                 <div className="navbar-row">
                     <div className="navbar-menu"> 
@@ -54,8 +56,9 @@ class Header extends PureComponent {
                         <img className="navbar-icon" src={logo} alt="logo" /> 
                     </div>
                     <div className="navbar-right">    
-                        <div className="currency-icon" onClick={() => this.setState({ currencyOpen: !this.state.currencyOpen })}> {this.props.currency }<img className="currency-vector" src={currencyBtn} alt="currency"  /></div>
-                        {this.state.currencyOpen && (<div className="currency-popup"><CurrencyList /></div>)}       
+                            {/* <div className="currency-icon" onClick={() => this.setState({ currencyOpen: !this.state.currencyOpen })}> {this.props.currency}<img className="currency-vector" src={currencyBtn} alt="currency" /></div> */}
+                            <div className="currency-icon" onClick={() => this.props.dispatch(showCurrencyList(!this.props.currencyOpen))}> {this.props.currency }<img className="currency-vector" src={currencyBtn} alt="currency"  /></div>
+                        {this.props.currencyOpen && (<div className="currency-popup"><CurrencyList /></div>)}       
                         <img className="cart-icon" src={cartIcon} alt="cart-logo" onClick={() => this.setState({ cartOpen: !this.state.cartOpen })}  /> 
                             {this.state.cartOpen && this.props.cartQuantity > 0 && (<MiniCart />)}
                             {this.props.cartQuantity > 0 && (<p className="cart-quantity">{this.props.cartQuantity }</p>)}
@@ -73,6 +76,7 @@ class Header extends PureComponent {
 function mapStateToProps(state) {
     return {
         currency: state.currency.currency,
+        currencyOpen: state.currency.currencyOpen,
         cartQuantity: state.cart.quantity,
     }
 };

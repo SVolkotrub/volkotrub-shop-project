@@ -22,12 +22,19 @@ export const currencySlice = createSlice({
     initialState: {
         currencies: [],
         currency: "$",
+        activeItem: 0,
+        currencyOpen: false,
         status: null,
         error: null,
     },
     reducers: {
         updateCurrency: (state, action) => {
-            state.currency = action.payload;  
+            state.currency = action.payload.currency; 
+            state.activeItem = action.payload.activeItem;
+            state.currencyOpen = action.payload.currencyOpen;
+        },
+        showCurrencyList: (state, action) => {
+            state.currencyOpen = action.payload;
         }
     },
     extraReducers: {
@@ -46,6 +53,6 @@ export const currencySlice = createSlice({
     }
 });
 
-export const { updateCurrency } = currencySlice.actions;
+export const { updateCurrency,showCurrencyList } = currencySlice.actions;
 
 export default currencySlice.reducer;
