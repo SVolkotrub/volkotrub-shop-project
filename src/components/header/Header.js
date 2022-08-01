@@ -45,7 +45,6 @@ class Header extends PureComponent {
                 {this.state.cartOpen && (
                         <ModalShadow onClick={() => this.setState({ cartOpen: !this.state.cartOpen })} />)}
                 {this.props.currencyOpen && (
-                        // <Modal onClick={() => this.setState({ currencyOpen: !this.state.currencyOpen })} />)}
                     <Modal onClick={() => this.props.dispatch(showCurrencyList(!this.props.currencyOpen))} />)}
                 <div className="navbar-container">   
                 <div className="navbar-row">
@@ -56,7 +55,6 @@ class Header extends PureComponent {
                         <img className="navbar-icon" src={logo} alt="logo" /> 
                     </div>
                     <div className="navbar-right">    
-                            {/* <div className="currency-icon" onClick={() => this.setState({ currencyOpen: !this.state.currencyOpen })}> {this.props.currency}<img className="currency-vector" src={currencyBtn} alt="currency" /></div> */}
                             <div className="currency-icon" onClick={() => this.props.dispatch(showCurrencyList(!this.props.currencyOpen))}> {this.props.currency }<img className="currency-vector" src={currencyBtn} alt="currency"  /></div>
                         {this.props.currencyOpen && (<div className="currency-popup"><CurrencyList /></div>)}       
                         <img className="cart-icon" src={cartIcon} alt="cart-logo" onClick={() => this.setState({ cartOpen: !this.state.cartOpen })}  /> 
