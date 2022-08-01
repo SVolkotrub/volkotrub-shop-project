@@ -148,7 +148,7 @@ class ProductPage extends PureComponent {
                                                 
                                                 return (
                                                     <div key={`${index}_${item}`} className={this.state[attributeNameIndex] === index ? "attribute-item-selected" : "attribute-item"} 
-                                                        onClick={() => { this.setState({  [attributeNameIndex]: index }) }}><p key={index}>{item.value}</p></div>
+                                                        onClick={() => { this.setState({  [attributeNameIndex]: index }) }}><p key={`${index}_itemvalue`}>{item.value}</p></div>
                                                 );
                                             })}
                                         </div>
