@@ -10,13 +10,13 @@ export default function getProductsByCategory(props) {
   async function fetchData() {
     try {
      
-        let result = await client.query({ query: GET_CATEGORY, variables: { title: props }  }).then((result) => {
-          console.log(result.data.category.products);
-              return result;
+        let resultByCategory = await client.query({ query: GET_CATEGORY, variables: { title: props }  }).then((resultByCategory) => {
+          console.log("getProductsByCategory", resultByCategory.data.category.products);
+              return resultByCategory;
           }).catch((error) => {
               console.log("Something went wrong in response");
           });          
-        return result.data.category.products; 
+        return resultByCategory.data.category.products; 
       } catch {}
   }  
  const response = fetchData();

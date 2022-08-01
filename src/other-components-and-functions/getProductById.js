@@ -10,7 +10,7 @@ export default function getProductsByCategory(props) {
     async function fetchData() {
        
       let result = await client.query({ query: GET_PRODUCT, variables: {  productId: props.id} }).then((result) => {
-          console.log(result)      
+          console.log("response getProductByID", result)      
           return result;
             }).catch((error) => {
                 console.log("Something went wrong in response");
