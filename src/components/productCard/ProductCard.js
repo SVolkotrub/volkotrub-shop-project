@@ -22,7 +22,7 @@ const Text = styled.p`
   left: 25.42%;
   right: 25.71%;
   top: 150px;
-  display: ${props => props.inStock ? `none` : `block`};
+  display: block;
   font-weight: 400;
   font-size: 24px;
   line-height: 160%;
@@ -126,7 +126,7 @@ constructor(props) {
         return (
             <ProductCardStyle key={product.id} >
                 <ImageContainer><Image inStock={inStock} src={product.gallery[0]} alt=" product" /></ImageContainer>
-                <Text inStock={inStock}>OUT OF STOCK</Text>
+                {!inStock && <Text >OUT OF STOCK</Text>}
                 <Title inStock={inStock}>{product.brand} {product.name}</Title>
                 <Price inStock={inStock}>{this.props.currency} {amount}</Price>
                 <Link
