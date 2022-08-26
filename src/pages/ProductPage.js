@@ -1,3 +1,4 @@
+
 import { PureComponent } from "react";
 import { useParams } from "react-router-dom";
 import { Interweave } from 'interweave';
@@ -7,7 +8,7 @@ import { connect } from 'react-redux';
 import "./ProductPage.css";
 import { addProductToCart,changeProductQuantity } from "../store/cart";
 
-const TextOutOfStock = styled.p`
+const TextOutOfStock = styled.div`
     text-transform: uppercase;
     position: absolute;
     left: 25.42%;
@@ -30,7 +31,7 @@ const FilterColor = styled.div`
 `;
 
 function withParams(Component) {
-  return props => <Component {...props} params={useParams()} />;
+ return props => <Component {...props} params={useParams()} />;
 }
 
 class ProductPage extends PureComponent {
@@ -124,55 +125,59 @@ class ProductPage extends PureComponent {
                 <div className="product-container">
                     <div className="small-image-wrapper">
                         {gallery.map((img, index) => {
-                                return <div key={`container_${index}`} className="small-image-container"><img className="small-image" src={img} key={`img_${index}`} alt="prod" onClick={() => {this.setState({toggleImage: index})}} /> </div>                           
+                            return <div key={`container_${index}`} className="small-image-container">
+                                <img className="small-image" src={img} key={`img_${index}`} alt="prod" onClick={() => { this.setState({ toggleImage: index })}} /> </div>                           
                         })}
-                    </div>
+                    </div> 
                     <div className="big-image-container">
                         <img className="big-image" src={gallery[toggleImage]} alt="" />
                         {!product.inStock && <TextOutOfStock >Out of Stock</TextOutOfStock>}
                     </div>
-                    
                     <div className="content-block">
                         <p className="brand">{product.brand}</p>
-                        <p className="name">{product.name} </p>
+                        <p className="name">{product.name}</p>
                         {attributes.map((obj, indexAttribute) => {
                             let attributeNameIndex = obj.name;
-                            this.setState({  [attributeNameIndex]: this.state[attributeNameIndex]});
-                            if(this.state[attributeNameIndex] === undefined) {this.setState({ [attributeNameIndex]: 0})}
+                            // this.setState({  [attributeNameIndex]: this.state[attributeNameIndex]});
+                            // if(this.state[attributeNameIndex] === undefined) {this.setState({ [attributeNameIndex]: 0})}
+                            let temp = this.state[attributeNameIndex];
+                            temp === undefined ? this.setState({ [attributeNameIndex]: 0}) : this.setState({  [attributeNameIndex]: temp});
+                            
                             if (obj.type !== "swatch") {
                                 return (
-                                    <>
-                                        <p key={`${indexAttribute}_${obj.name}`} className="attribute-name">{obj.name}:</p>
+                                    <div key={`swatch_ ${indexAttribute}`}>
+                                        <div key={`${indexAttribute}_${obj.name}`} className="attribute-name">{obj.name}:</div>
                                         <div key={`itemContainer_${indexAttribute}`} className="attribute-item-container">
                                             {obj.items.map((item, index) => {
                                                 
                                                 return (
-                                                    <div key={`${index}_${item}`} className={this.state[attributeNameIndex] === index ? "attribute-item-selected" : "attribute-item"} 
-                                                        onClick={() => { this.setState({  [attributeNameIndex]: index }) }}><p key={`${index}_itemvalue`}>{item.value}</p></div>
+                                                    <div key={`${index}_attribute${item} `} className={this.state[attributeNameIndex] === index ? "attribute-item-selected" : "attribute-item"} 
+                                                        onClick={() => { this.setState({ [attributeNameIndex]: index }) }}>
+                                                        <p key={`${index}_item value${item.value}`}>{item.value}</p></div>
                                                 );
                                             })}
                                         </div>
-                                    </>
+                                    </div>
                                 );
                             } else {
                                 return (
-                                <>
-                                        <p key={indexAttribute} className="attribute-name">{obj.name}:</p>
+                                <div key={indexAttribute}>
+                                        <div key={`${indexAttribute}_color`} className="attribute-name">{obj.name}:</div>
                                         <div key={`colorContainer_${indexAttribute}`}  className="attribute-color-container">
                                             {obj.items.map((item, index) => {   
                                                 return (
-                                                    <FilterColor key={`index color ${index}`} color={ item.value} selected={this.colorSelect(attributeNameIndex, index)} onClick={()=>{this.setState({selectedColor: index})}} />
+                                                    <FilterColor key={`index color ${index}`} color={ item.value} selected={this.colorSelect(attributeNameIndex, index)} onClick={()=>{this.setState({ selectedColor: index})}} />
                                                 );
                                             })}
                                         </div>
-                                    </>
+                                    </div>
                                 )
                             }
                         })}                        
                         <p className="attribute-name">Price:</p>
                         <p className="price">{this.props.currency} {amount }</p>
                         {product.inStock && (<button  className="button-style" onClick={()=> this.addToCart(product) }>Add to cart</button>)}
-                        <p className="description"><Interweave content={product.description} /></p>
+                        <div className="description"><Interweave content={product.description} /></div>
                     </div>
                 </div>
             );

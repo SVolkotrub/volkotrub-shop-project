@@ -48,7 +48,7 @@ class ShowAttributesInCart extends PureComponent {
                  {this.props.cartProducts[productIndex].attributes.map((obj, indexAttribute) => {
                      if (obj.type !== "swatch") {
                         return (
-                            <>
+                            <div key={ Math.random()}>
                                 <p key={`${indexAttribute}_${obj.name} cart`} className= {this.props.view === "cart" ? "attribute-name" : "minicart-attribute-name"}>{obj.name}:</p>
                                 <div key={`itemContainer_${indexAttribute}`} className="cart-item-container" >
                                     {obj.items.map((item, index) => {
@@ -58,11 +58,11 @@ class ShowAttributesInCart extends PureComponent {
                                         );
                                     })}
                                 </div>
-                            </>
+                            </div>
                         );
                     } else {
                         return (
-                            <>
+                            <div key={Math.random()}>
                                 <p key={indexAttribute} className={this.props.view === "cart"? "attribute-name" : "minicart-attribute-name"}>{obj.name}:</p>
                                 <div key={`colorContainer_${indexAttribute}`} className="cart-attribute-color-container">
                                     {obj.items.map((item, index) => {
@@ -71,7 +71,7 @@ class ShowAttributesInCart extends PureComponent {
                                         );
                                     })}
                                 </div>
-                            </>
+                            </div>
                         )
                     }
                 })
